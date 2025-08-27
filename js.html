@@ -1,0 +1,552 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Full Stack Development includes HTML, CSS, Javascript, and Bootstrap for the front end and PHP+MySQL for back end technology."/>
+    <meta name="Keywords" content="Full Stack Development, HTML, CSS, Javascript, Bootstrap, PHP+MySQL, Web Application Development">
+    <meta name="author" content="Gaurab Sapkota">
+    <meta name="copyright" content="Copyright © 2025" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <!-- Full jQuery version -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- favicon for portfolio -->
+    <link rel="shortcut icon" href="assests/images/favicon.png" type="image/x-icon">
+    <title>JavaScript - Portfolio</title>
+    <style>
+  /* Global Styles */
+      :root {
+        --primary: #6c63ff;
+        --secondary: #4d44db;
+        --accent: #ff6b6b;
+        --dark: #121212;
+        --dark-light: #1e1e1e;
+        --light: #f8f9fa;
+        --text: #e1e1e1;
+        --code-bg: #2d2d2d;
+      }
+      body {
+        background-color: var(--dark);
+        color: var(--text);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar { width: 10px; }
+      ::-webkit-scrollbar-track { background: var(--dark-light); }
+      ::-webkit-scrollbar-thumb {
+        background: var(--primary);
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover { background: var(--secondary); }
+      /* Navbar refresh */
+      .navbar {
+        background: rgba(30, 30, 30, 0.95) !important;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+        padding: 12px 0;
+        transition: all 0.4s ease;
+      }
+      .navbar.scrolled { padding: 8px 0; }
+      .navbar-brand {
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: var(--light) !important;
+      }
+      .navbar-brand img { transition: transform 0.3s ease; }
+      .navbar-brand:hover img { transform: rotate(5deg); }
+      .navbar-nav .nav-link {
+        color: var(--text) !important;
+        font-weight: 500;
+        margin: 0 8px;
+        position: relative;
+        padding: 8px 0 !important;
+      }
+      .navbar-nav .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--accent);
+        transition: width 0.3s ease;
+      }
+      .navbar-nav .nav-link:hover::after,
+      .navbar-nav .nav-link.active::after { width: 100%; }
+      .navbar-toggler { border: none; padding: 4px 8px; }
+      .navbar-toggler:focus { box-shadow: none; }
+      .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
+      /* Title section */
+      .container-fluid.py-5 {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%) !important;
+        border-radius: 16px;
+        margin-top: 100px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+      .container-fluid.py-5::before {
+        content: '';
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        top: -50%;
+        left: -50%;
+        animation: pulse 15s infinite linear;
+      }
+      @keyframes pulse {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      .display-5 {
+        font-weight: 800;
+        background: linear-gradient(45deg, var(--light), #a5b4fc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        position: relative;
+        z-index: 1;
+      }
+      /* Content section */
+      .container.py-5.my-5 {
+        background: var(--dark-light);
+        border-radius: 16px;
+        padding: 40px !important;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        margin-top: 50px !important;
+        margin-bottom: 50px !important;
+      }
+      .lead {
+        font-size: 1.25rem;
+        color: #d1d1d1;
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      /* Cards Section */
+      .card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        height: 100%;
+      }
+      .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        border-color: var(--primary);
+      }
+      .card-body { padding: 25px; }
+      .card-title {
+        color: var(--primary);
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+      .card-text { color: #d1d1d1; }
+      /* Features Section */
+      h2 {
+        font-weight: 700;
+        color: var(--accent);
+        margin-bottom: 25px;
+      }
+      h2::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 4px;
+        background: linear-gradient(to right, var(--primary), var(--accent));
+        border-radius: 2px;
+        margin-top: 10px;
+      }
+      /* Buttons refresh */
+      .btn-outline-warning {
+        border: 2px solid var(--accent);
+        color: var(--accent);
+        border-radius: 50px;
+        padding: 6px 15px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+      }
+      .btn-outline-warning:hover {
+        background-color: var(--accent);
+        color: var(--dark);
+      }
+      /* Footer refresh */
+      .page-footer { background: var(--dark-light) !important; margin-top: 80px; }
+      .page-footer a {
+        color: var(--text);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+      .page-footer a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 1px;
+        bottom: -4px;
+        left: 0;
+        background-color: var(--accent);
+        transition: width 0.3s ease;
+      }
+      .page-footer a:hover { color: var(--accent); }
+      .page-footer a:hover::after { width: 100%; }
+      .footer-copyright {
+        background: rgba(0, 0, 0, 0.2) !important;
+        color: var(--text);
+      }
+      .footer-copyright a {
+        color: var(--primary);
+        font-weight: 600;
+      }
+      /* Social icons */
+      .mb-5 a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--dark);
+        margin: 0 8px;
+        transition: all 0.3s ease;
+      }
+      .mb-5 a:hover {
+        background: var(--primary);
+        transform: translateY(-3px);
+      }
+      .mb-5 a i { font-size: 1.2rem; }
+      /* Scroll-to-top refresh - FIXED */
+      .top-move {
+        background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+        border-radius: 50%;
+        height: 60px;
+        width: 60px;
+        box-shadow: 0 5px 20px rgba(108, 99, 255, 0.5);
+        transition: all 0.3s ease;
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+      }
+      .top-move.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .top-move:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(108, 99, 255, 0.7);
+      }
+      .top-move a {
+        color: white !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+      }
+      .top-move a i { font-size: 2rem; }
+      /* Animations */
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fadeIn { animation: fadeIn 1s ease forwards; }
+      /* Responsive adjustments */
+      @media (max-width: 992px) {
+        .navbar-nav {
+          background: var(--dark-light);
+          border-radius: 10px;
+          padding: 15px;
+          margin-top: 10px;
+        }
+      }
+      @media (max-width: 768px) {
+        .display-5 { font-size: 2.5rem; }
+        .container-fluid.py-5 { margin-top: 80px; }
+        .container.py-5.my-5 { padding: 25px !important; }
+      }
+    </style>
+    
+  </head>
+<body>
+<!-- navbar start -->
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark text-light fs-4">
+  <div class="container-fluid">
+    <a class="navbar-brand fs-4 fw-bold" href="#">
+      <img src="assests/images/logo.png" alt="" width="70px" class="rounded-3">
+      Portfolio</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="fullstack.html">What is full stack?</a></li>
+        <li class="nav-item"><a class="nav-link" href="html.html">HTML</a></li>
+        <li class="nav-item"><a class="nav-link" href="css.html">CSS</a></li>
+        <li class="nav-item"><a class="nav-link" href="bs.html">Bootstrap</a></li>
+        <li class="nav-item"><a class="nav-link active" href="js.html">JavaScript</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- navbar end -->
+
+<!-- title start -->
+<div class="container-fluid py-5 text-light animate-fadeIn" style="margin-top: 80px;">
+  <h1 class="display-5 fw-bold text-center">JavaScript</h1>
+</div>
+<!-- title end -->
+
+<!-- content section -->
+<div class="container py-5 my-5 animate-fadeIn">
+
+  <!-- Introduction -->
+<h2>Introduction to JavaScript</h2>
+<p class="fs-5">
+JavaScript is the programming language of the web. It enables developers to add 
+<strong>interactivity</strong>, <strong>dynamic content</strong>, and <strong>real-time updates</strong> 
+to websites. Unlike HTML (structure) and CSS (styling), JavaScript controls the 
+behavior of a page, responding instantly to user actions and manipulating content on the fly.
+</p>
+<p class="fs-5">
+It runs natively in all modern browsers and can also power back-end applications 
+through Node.js, allowing developers to build full-stack solutions with a single language.
+</p>
+
+<!-- Why JavaScript is Powerful -->
+<h2 class="mt-4">Why JavaScript is Powerful</h2>
+<ul class="fs-5">
+  <li><strong>Universal support:</strong> Runs in every major browser without extra setup.</li>
+  <li><strong>Fast and lightweight:</strong> Executes directly in the browser for instant feedback.</li>
+  <li><strong>Massive ecosystem:</strong> Frameworks like React, Vue, and Angular speed up modern development.</li>
+  <li><strong>Full-stack capabilities:</strong> Use JavaScript both on the front end and back end with Node.js.</li>
+  <li><strong>Constantly evolving:</strong> Modern ECMAScript (ES6+) adds modules, classes, and async features.</li>
+</ul>
+
+<!-- Core Capabilities -->
+<h2 class="mt-4">What Can JavaScript Do?</h2>
+<p class="fs-5">
+JavaScript brings static pages to life by handling events, updating content dynamically, and 
+communicating with servers. In real-world projects, JavaScript is used to:
+</p>
+<ul class="fs-5">
+  <li>Create interactive user interfaces with smooth animations and instant feedback.</li>
+  <li>Update the DOM without reloading pages (single-page app behavior).</li>
+  <li>Validate user input on the client side to prevent errors early.</li>
+  <li>Fetch and send data asynchronously using AJAX or the Fetch API.</li>
+  <li>Build complex web apps using modern libraries and frameworks.</li>
+</ul>
+
+
+  <!-- Example 1: Alert -->
+  <h2 class="mt-4">Example 1: Simple Alert</h2>
+  <p>This button shows how JavaScript can trigger actions instantly when users interact with a page:</p>
+  <button class="btn btn-success" onclick="showAlert()">Show Alert</button>
+
+  <!-- Example 2: DOM Manipulation -->
+  <h2 class="mt-4">Example 2: Changing Page Content</h2>
+  <p>This button updates the text below without refreshing the page — a simple example of DOM manipulation:</p>
+  <div id="demo" class="mb-2">This text will change when you click the button.</div>
+  <button class="btn btn-primary mt-2" onclick="changeText()">Change Text</button>
+
+  <!-- Example 3: Form Validation (Optional) -->
+  <h2 class="mt-4">Example 3: Form Validation</h2>
+  <p>This form checks whether a field is empty before submitting:</p>
+  <form onsubmit="return validateForm()" class="mt-3">
+    <input type="text" id="nameField" class="form-control mb-2" placeholder="Enter your name">
+    <button type="submit" class="btn btn-warning">Submit</button>
+  </form>
+
+<h2 class="mt-4">What this page demonstrates</h2>
+<p class="fs-5">
+This webpage demonstrates how JavaScript adds interactivity and dynamic behavior to web pages. 
+The alert button shows event handling, the text changer demonstrates how the DOM can be updated in real time, 
+and the form validation example checks user input before submission. 
+Together, these examples highlight how JavaScript transforms static pages into interactive applications.
+</p>
+</div>
+
+<!-- content end -->
+
+<!-- Footer -->
+<footer class="page-footer font-small indigo">
+  <!-- Footer Links -->
+  <div class="container-fluid text-light">
+
+    <!-- Grid row-->
+    <div class="row text-center d-flex justify-content-center pt-5 mb-3">
+
+      <!-- Grid column -->
+      <div class="col-md-2 mb-3">
+        <h6 class="text-uppercase font-weight-bold">
+          <a href="index.html">Home</a>
+        </h6>
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-2 mb-3">
+        <h6 class="text-uppercase font-weight-bold">
+          <a href="fullstack.html">What is full stack?</a>
+        </h6>
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-2 mb-3">
+        <h6 class="text-uppercase font-weight-bold">
+          <a href="css.html">CSS</a>
+        </h6>
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-2 mb-3">
+        <h6 class="text-uppercase font-weight-bold">
+          <a href="bs.html">Bootstrap</a>
+        </h6>
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-2 mb-3">
+        <h6 class="text-uppercase font-weight-bold">
+          <a href="js.html">Javascript</a>
+        </h6>
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row-->
+    <hr class="rgba-white-light" style="margin: 0 15%;">
+
+    <!-- Grid row-->
+    <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
+
+      <!-- Grid column -->
+      <div class="col-md-8 col-12 mt-5">
+        <p style="line-height: 1.7rem">
+          All &copy; right reserved @ 2025
+        </p>
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row-->
+    <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
+
+    <!-- Grid row-->
+    <div class="row pb-3">
+
+      <!-- Grid column -->
+      <div class="col-md-12">
+
+        <div class="mb-5 text-center">
+
+          <!-- Facebook -->
+          <a class="fb-ic" href="#">
+            <i class="fab fa-facebook-f fa-lg white-text mr-4"> </i>
+          </a>
+          <!-- Twitter -->
+          <a class="tw-ic" href="#">
+            <i class="fab fa-twitter fa-lg white-text mr-4"> </i>
+          </a>
+          
+          <!--Linkedin -->
+          <a class="li-ic" href="#">
+            <i class="fab fa-linkedin-in fa-lg white-text mr-4"> </i>
+          </a>
+
+          <!--Instagram-->
+          <a class="ins-ic" href="#">
+            <i class="fab fa-instagram fa-lg white-text mr-4"> </i>
+          </a>
+         
+          <!--whatsapp-->
+          <a class="ins-ic" href="https://wa.me/9779845431425">
+            <i class="fab fa-whatsapp fa-lg white-text mr-4"> </i>
+          </a>
+        </div>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row-->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">Powered By:
+    <a href="#"> Gaurab</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+
+<!-- Scroll-to-top button -->
+<div class="top-move" id="move-top">
+  <a href="#"><i class="fas fa-arrow-up"></i></a>
+</div>
+
+<script>
+$(window).scroll(function() {
+  if ($(window).scrollTop() > 50) { $('.navbar').addClass('scrolled'); } 
+  else { $('.navbar').removeClass('scrolled'); }
+
+  if ($(window).scrollTop() > 300) { $('#move-top').addClass('visible'); } 
+  else { $('#move-top').removeClass('visible'); }
+});
+
+$('#move-top a').on('click', function(e) {
+  e.preventDefault();
+  $('html, body').animate({ scrollTop: 0 }, 800);
+});
+
+function showAlert() {
+  alert("Hello! This is a JavaScript alert.\n\nJavaScript allows you to create interactive web experiences!");
+}
+
+function changeText() {
+  const demoElement = document.getElementById('demo');
+  demoElement.innerHTML = "Congratulations! You've successfully changed this text using JavaScript!";
+  demoElement.style.color = "#6c63ff";
+  demoElement.style.fontWeight = "bold";
+}
+
+function validateForm() {
+  const name = document.getElementById('nameField').value.trim();
+  if (name === "") {
+    alert("Please enter your name before submitting!");
+    return false;
+  }
+  alert("Form submitted successfully! Hello, " + name + "!");
+  return true;
+}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

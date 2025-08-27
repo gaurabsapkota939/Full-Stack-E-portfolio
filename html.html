@@ -1,0 +1,1016 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Full Stack Development includes HTML, CSS, Javascript, and Bootstrap for the front end and PHP+MySQL for back end technology."/>
+    <meta name="Keywords" content="Full Stack Development, HTML, CSS, Javascript, Bootstrap, PHP+MySQL, Web Application Development">
+    <meta name="author" content="Gaurab Sapkota">
+    <meta name="copyright" content="Copyright © 2025" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    
+    <!-- Full jQuery version -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Favicon for portfolio -->
+    <link rel="shortcut icon" href="assests/images/favicon.png" type="image/x-icon">
+    <title>HTML - Portfolio</title>
+    <style>
+      /* Global Styles */
+      :root {
+        --primary: #6c63ff;
+        --secondary: #4d44db;
+        --accent: #ff6b6b;
+        --dark: #121212;
+        --dark-light: #1e1e1e;
+        --light: #f8f9fa;
+        --text: #e1e1e1;
+        --code-bg: #2d2d2d;
+      }
+      
+      body {
+        background-color: var(--dark);
+        color: var(--text);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+      
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      
+      ::-webkit-scrollbar-track {
+        background: var(--dark-light);
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        background: var(--primary);
+        border-radius: 10px;
+      }
+      
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--secondary);
+      }
+      
+      /* Navbar refresh */
+      .navbar {
+        background: rgba(30, 30, 30, 0.95) !important;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+        padding: 12px 0;
+        transition: all 0.4s ease;
+      }
+      
+      .navbar.scrolled {
+        padding: 8px 0;
+      }
+      
+      .navbar-brand {
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: var(--light) !important;
+      }
+      
+      .navbar-brand img {
+        transition: transform 0.3s ease;
+      }
+      
+      .navbar-brand:hover img {
+        transform: rotate(5deg);
+      }
+      
+      .navbar-nav .nav-link {
+        color: var(--text) !important;
+        font-weight: 500;
+        margin: 0 8px;
+        position: relative;
+        padding: 8px 0 !important;
+      }
+      
+      .navbar-nav .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--accent);
+        transition: width 0.3s ease;
+      }
+      
+      .navbar-nav .nav-link:hover::after,
+      .navbar-nav .nav-link.active::after {
+        width: 100%;
+      }
+      
+      .navbar-toggler {
+        border: none;
+        padding: 4px 8px;
+      }
+      
+      .navbar-toggler:focus {
+        box-shadow: none;
+      }
+      
+      .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
+      
+      /* Title section */
+      .container-fluid.py-5 {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%) !important;
+        border-radius: 16px;
+        margin-top: 100px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .container-fluid.py-5::before {
+        content: '';
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        top: -50%;
+        left: -50%;
+        animation: pulse 15s infinite linear;
+      }
+      
+      @keyframes pulse {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      
+      .display-5 {
+        font-weight: 800;
+        background: linear-gradient(45deg, var(--light), #a5b4fc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        position: relative;
+        z-index: 1;
+      }
+      
+      /* Content section */
+      .container.py-5.my-5 {
+        background: var(--dark-light);
+        border-radius: 16px;
+        padding: 40px !important;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        margin-top: 50px !important;
+        margin-bottom: 50px !important;
+      }
+      
+      h2 {
+        font-weight: 700;
+        color: var(--accent);
+        position: relative;
+        padding-bottom: 15px;
+        margin-bottom: 25px;
+        text-align: center;
+      }
+      
+      h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(to right, var(--primary), var(--accent));
+        border-radius: 2px;
+      }
+      
+      .lead {
+        font-size: 1.25rem;
+        color: #d1d1d1;
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      
+      hr.my-5 {
+        border-color: rgba(255,255,255,0.1);
+        margin: 3rem 0;
+      }
+      
+      h4 {
+        font-weight: 600;
+        color: var(--primary);
+        margin-bottom: 20px;
+        padding-left: 15px;
+        border-left: 4px solid var(--primary);
+      }
+      
+      pre {
+        background: var(--code-bg) !important;
+        color: #f8f8f2;
+        border-radius: 8px;
+        padding: 20px !important;
+        border-left: 4px solid var(--accent);
+        overflow-x: auto;
+        font-family: 'Fira Code', monospace;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        margin-bottom: 30px;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+      
+      code {
+        color: #ff79c6;
+      }
+      
+      .html-doctype {
+        color: #ff79c6;
+      }
+      
+      .html-tag {
+        color: #ff79c6;
+      }
+      
+      .html-comment {
+        color: #6272a4;
+      }
+      
+      .html-attr {
+        color: #50fa7b;
+      }
+      
+      .html-attr-value {
+        color: #f1fa8c;
+      }
+      
+      .list-group-item {
+        background: var(--dark);
+        color: var(--text);
+        border: 1px solid rgba(255,255,255,0.1);
+        padding: 15px 20px;
+        margin-bottom: 10px;
+        border-radius: 8px !important;
+        transition: all 0.3s ease;
+      }
+      
+      .list-group-item:hover {
+        background: rgba(108, 99, 255, 0.1);
+        transform: translateX(5px);
+      }
+      
+      /* Buttons refresh */
+      .btn-outline-warning {
+        border: 2px solid var(--accent);
+        color: var(--accent);
+        border-radius: 50px;
+        padding: 8px 20px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+      
+      .btn-outline-warning:hover {
+        background-color: var(--accent);
+        color: var(--dark);
+      }
+      
+      .btn-primary {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        border: none;
+        border-radius: 50px;
+        padding: 12px 30px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 15px rgba(108, 99, 255, 0.4);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+      }
+      
+      .btn-primary::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: all 0.6s ease;
+        z-index: -1;
+      }
+      
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(108, 99, 255, 0.6);
+      }
+      
+      .btn-primary:hover::before {
+        left: 100%;
+      }
+      
+      /* Footer  */
+      .page-footer {
+        background: var(--dark-light) !important;
+        margin-top: 80px;
+      }
+      
+      .page-footer a {
+        color: var(--text);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+      
+      .page-footer a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 1px;
+        bottom: -4px;
+        left: 0;
+        background-color: var(--accent);
+        transition: width 0.3s ease;
+      }
+      
+      .page-footer a:hover {
+        color: var(--accent);
+      }
+      
+      .page-footer a:hover::after {
+        width: 100%;
+      }
+      
+      .footer-copyright {
+        background: rgba(0, 0, 0, 0.2) !important;
+        color: var(--text);
+      }
+      
+      .footer-copyright a {
+        color: var(--primary);
+        font-weight: 600;
+      }
+      
+      /* Social icons */
+      .mb-5 a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--dark);
+        margin: 0 8px;
+        transition: all 0.3s ease;
+      }
+      
+      .mb-5 a:hover {
+        background: var(--primary);
+        transform: translateY(-3px);
+      }
+      
+      .mb-5 a i {
+        font-size: 1.2rem;
+      }
+      
+      /* Scroll-to-top  */
+      .top-move {
+        background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+        border-radius: 50%;
+        height: 50px;
+        width: 50px;
+        box-shadow: 0 5px 20px rgba(108, 99, 255, 0.5);
+        transition: all 0.3s ease;
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+      }
+      
+      .top-move.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      
+      .top-move:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(108, 99, 255, 0.7);
+      }
+      
+      .top-move a {
+        color: white !important;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+      }
+      
+      /* Interactive Elements */
+      .feature-card {
+        background: var(--dark);
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        height: 100%;
+      }
+      
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(108, 99, 255, 0.2);
+        border-color: rgba(108, 99, 255, 0.3);
+      }
+      
+      .feature-icon {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 15px;
+        display: inline-block;
+        transition: all 0.3s ease;
+      }
+      
+      .feature-card:hover .feature-icon {
+        transform: scale(1.1);
+        color: var(--accent);
+      }
+      
+      .interactive-demo {
+        background: var(--dark);
+        border-radius: 12px;
+        padding: 20px;
+        margin: 30px 0;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      .demo-container {
+        background: white;
+        border-radius: 8px;
+        padding: 20px;
+        min-height: 200px;
+        color: #333;
+        margin-top: 15px;
+      }
+      
+      .demo-controls {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 15px;
+      }
+      
+      .demo-btn {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      
+      .demo-btn:hover {
+        background: var(--secondary);
+      }
+      
+      .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 40px auto;
+      }
+      
+      .timeline::after {
+        content: '';
+        position: absolute;
+        width: 6px;
+        background-color: var(--primary);
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -3px;
+        border-radius: 10px;
+      }
+      
+      .timeline-item {
+        padding: 10px 40px;
+        position: relative;
+        width: 50%;
+        box-sizing: border-box;
+      }
+      
+      .timeline-item::after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: var(--accent);
+        border-radius: 50%;
+        top: 15px;
+        z-index: 1;
+      }
+      
+      .left {
+        left: 0;
+      }
+      
+      .right {
+        left: 50%;
+      }
+      
+      .left::after {
+        right: -10px;
+      }
+      
+      .right::after {
+        left: -10px;
+      }
+      
+      .timeline-content {
+        padding: 20px;
+        background-color: var(--dark);
+        border-radius: 6px;
+        border-left: 3px solid var(--primary);
+      }
+      
+      .tooltip-box {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        margin: 0 5px;
+        color: var(--primary);
+        font-weight: bold;
+        border-bottom: 1px dotted var(--primary);
+      }
+      
+      .tooltip-text {
+        visibility: hidden;
+        width: 200px;
+        background-color: var(--dark-light);
+        color: var(--text);
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -100px;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      
+      .tooltip-box:hover .tooltip-text {
+        visibility: visible;
+        opacity: 1;
+      }
+      
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+      }
+      
+      .animate-fadeIn {
+        animation: fadeIn 1s ease forwards;
+      }
+      
+      .animate-pulse {
+        animation: pulse 2s infinite;
+      }
+      
+      /* Responsive adjustments */
+      @media (max-width: 992px) {
+        .navbar-nav {
+          background: var(--dark-light);
+          border-radius: 10px;
+          padding: 15px;
+          margin-top: 10px;
+        }
+        
+        .timeline::after {
+          left: 31px;
+        }
+        
+        .timeline-item {
+          width: 100%;
+          padding-left: 70px;
+          padding-right: 25px;
+        }
+        
+        .timeline-item::after {
+          left: 21px;
+        }
+        
+        .right {
+          left: 0;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .display-5 {
+          font-size: 2.5rem;
+        }
+        
+        .container-fluid.py-5 {
+          margin-top: 80px;
+        }
+        
+        .container.py-5.my-5 {
+          padding: 25px !important;
+        }
+        
+        pre {
+          padding: 15px !important;
+          font-size: 0.9rem;
+        }
+        
+        .demo-controls {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+<body>
+<!-- navbar start -->
+ <nav class="navbar navbar-expand-lg fixed-top navbar-dark text-light fs-4">
+   <div class="container-fluid">
+     <a class="navbar-brand fs-4 fw-bold" href="#">
+      <img src="assests/images/logo.png" alt="" width="70px" class="rounded-3">
+      Portfolio</a>
+     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+     </button>
+     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+         <li class="nav-item">
+           <a class="nav-link" aria-current="page" href="index.html">Home</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link" href="fullstack.html">What is full stack?</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link active" href="html.html">HTML</a>
+         </li>
+          <li class="nav-item">
+           <a class="nav-link" href="css.html">CSS</a>
+         </li>
+          <li class="nav-item">
+           <a class="nav-link" href="bs.html">Bootstrap</a>
+         </li>
+          <li class="nav-item">
+           <a class="nav-link" href="js.html">JavaScript</a>
+         </li>
+        <!-- end -->
+       </ul>
+     </div>
+   </div>
+ </nav>
+<!-- navbar end -->
+<!-- title start -->
+ <div class="container-fluid py-5 text-light animate-fadeIn" style="margin-top: 80px;">
+    <h1 class="display-5 fw-bold text-center">HTML</h1>
+    <p class="text-center mt-3 fs-5">The Foundation of Every Web Page</p>
+ </div>
+<!-- title end -->
+<!--content start-->
+<div class="container py-5 my-5 animate-fadeIn">
+  <h2 class="mb-4">Introduction to HTML</h2>
+  <p class="lead">HTML (HyperText Markup Language) is the standard markup language for creating webpages and web applications. It structures your content using a system of tags and elements that define the meaning and purpose of each content piece.</p>
+  
+  <div class="row mt-5">
+    <div class="col-md-4 mb-4">
+      <div class="feature-card text-center">
+        <div class="feature-icon">
+          <i class="fas fa-code"></i>
+        </div>
+        <h4>Semantic Structure</h4>
+        <p>HTML5 provides semantic elements that clearly define different parts of a webpage, making your code more readable and accessible.</p>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="feature-card text-center">
+        <div class="feature-icon">
+          <i class="fas fa-link"></i>
+        </div>
+        <h4>Hypertext Capabilities</h4>
+        <p>Connect documents and resources through hyperlinks, creating the interconnected web of information we use every day.</p>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="feature-card text-center">
+        <div class="feature-icon">
+          <i class="fas fa-mobile-alt"></i>
+        </div>
+        <h4>Universal Compatibility</h4>
+        <p>HTML works across all browsers and devices, ensuring your content is accessible to everyone, everywhere.</p>
+      </div>
+    </div>
+  </div>
+  
+  <hr class="my-5">
+  
+  <div class="row">
+    <div class="col-md-6">
+      <h4>Basic Structure</h4>
+      <pre class="p-3 rounded">
+<span class="html-doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="html-tag">&lt;html lang="en"&gt;</span>
+  <span class="html-tag">&lt;head&gt;</span>
+    <span class="html-tag">&lt;meta charset="UTF-8"&gt;</span>
+    <span class="html-tag">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span>
+    <span class="html-tag">&lt;title&gt;</span>My First Web Page<span class="html-tag">&lt;/title&gt;</span>
+  <span class="html-tag">&lt;/head&gt;</span>
+  <span class="html-tag">&lt;body&gt;</span>
+    <span class="html-tag">&lt;header&gt;</span>
+      <span class="html-tag">&lt;h1&gt;</span>Hello, World!<span class="html-tag">&lt;/h1&gt;</span>
+    <span class="html-tag">&lt;/header&gt;</span>
+    <span class="html-tag">&lt;main&gt;</span>
+      <span class="html-tag">&lt;p&gt;</span>This is my first webpage built with HTML.<span class="html-tag">&lt;/p&gt;</span>
+    <span class="html-tag">&lt;/main&gt;</span>
+  <span class="html-tag">&lt;/body&gt;</span>
+<span class="html-tag">&lt;/html&gt;</span>
+      </pre>
+    </div>
+    <div class="col-md-6">
+      <h4>Key Features</h4>
+      <ul class="list-group">
+        <li class="list-group-item"><i class="fas fa-check-circle me-2 text-success"></i> Uses semantic tags like &lt;header&gt;, &lt;main&gt;, &lt;footer&gt;</li>
+        <li class="list-group-item"><i class="fas fa-check-circle me-2 text-success"></i> Supports multimedia (images, video, audio)</li>
+        <li class="list-group-item"><i class="fas fa-check-circle me-2 text-success"></i> Forms for user input and interaction</li>
+        <li class="list-group-item"><i class="fas fa-check-circle me-2 text-success"></i> Accessibility features with ARIA attributes</li>
+        <li class="list-group-item"><i class="fas fa-check-circle me-2 text-success"></i> SEO-friendly structure for better visibility</li>
+      </ul>
+      
+      <div class="mt-4">
+        <h4>Did You Know?</h4>
+        <div class="alert alert-primary" role="alert">
+          <i class="fas fa-lightbulb me-2"></i> HTML was first proposed by <span class="tooltip-box">Tim Berners-Lee<span class="tooltip-text">Inventor of the World Wide Web</span></span> in 1989 while working at CERN. The first version had just 18 elements!
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="interactive-demo mt-5">
+    <h4>Interactive HTML Demo</h4>
+    <p>See how HTML tags work in real-time. Try adding different elements:</p>
+    
+    <div class="demo-controls">
+      <button class="demo-btn" onclick="addElement('h1')">Add Heading</button>
+      <button class="demo-btn" onclick="addElement('p')">Add Paragraph</button>
+      <button class="demo-btn" onclick="addElement('button')">Add Button</button>
+      <button class="demo-btn" onclick="addElement('img')">Add Image</button>
+      <button class="demo-btn" onclick="clearDemo()">Clear All</button>
+    </div>
+    
+    <div class="demo-container" id="html-demo">
+      <p class="text-muted">Your HTML elements will appear here...</p>
+    </div>
+  </div>
+  
+  <div class="mt-5">
+    <h4 class="text-center mb-4">HTML Evolution Timeline</h4>
+    <div class="timeline">
+      <div class="timeline-item left">
+        <div class="timeline-content">
+          <h5>1991</h5>
+          <p>HTML first published</p>
+        </div>
+      </div>
+      <div class="timeline-item right">
+        <div class="timeline-content">
+          <h5>1995</h5>
+          <p>HTML 2.0 introduced</p>
+        </div>
+      </div>
+      <div class="timeline-item left">
+        <div class="timeline-content">
+          <h5>1997</h5>
+          <p>HTML 3.2 released</p>
+        </div>
+      </div>
+      <div class="timeline-item right">
+        <div class="timeline-content">
+          <h5>1999</h5>
+          <p>HTML 4.01 became standard</p>
+        </div>
+      </div>
+      <div class="timeline-item left">
+        <div class="timeline-content">
+          <h5>2014</h5>
+          <p>HTML5 finalized</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--content end-->
+
+<!-- Footer -->
+<footer class="page-footer font-small indigo">
+
+  <!-- Footer Links -->
+  <div class="container-fluid text-light">
+
+    <!-- Grid row-->
+    <div class="row text-center d-flex justify-content-center pt-5 mb-3">
+
+      <!-- Grid column -->
+      <div class="col-md-2 mb-3">
+        <h6 class="text-uppercase font-weight-bold">
+          <a href="index.html">Home</a>
+        </h6>
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-2 mb-3">
+        <h6 class="text-uppercase font-weight-bold">
+          <a href="fullstack.html">What is full stack?</a>
+        </h6>
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-2 mb-3">
+        <h6 class="text-uppercase font-weight-bold">
+          <a href="css.html">CSS</a>
+        </h6>
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-2 mb-3">
+        <h6 class="text-uppercase font-weight-bold">
+          <a href="bs.html">Bootstrap</a>
+        </h6>
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-2 mb-3">
+        <h6 class="text-uppercase font-weight-bold">
+          <a href="js.html">Javascript</a>
+        </h6>
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row-->
+    <hr class="rgba-white-light" style="margin: 0 15%;">
+
+    <!-- Grid row-->
+    <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
+
+      <!-- Grid column -->
+      <div class="col-md-8 col-12 mt-5">
+        <p style="line-height: 1.7rem">
+          All &copy; right reserved @ 2025
+        </p>
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row-->
+    <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
+
+    <!-- Grid row-->
+    <div class="row pb-3">
+
+      <!-- Grid column -->
+      <div class="col-md-12">
+
+        <div class="mb-5 text-center">
+
+          <!-- Facebook -->
+          <a class="fb-ic" href="#">
+            <i class="fab fa-facebook-f fa-lg white-text mr-4"> </i>
+          </a>
+          <!-- Twitter -->
+          <a class="tw-ic" href="#">
+            <i class="fab fa-twitter fa-lg white-text mr-4"> </i>
+          </a>
+          
+          <!--Linkedin -->
+          <a class="li-ic" href="#">
+            <i class="fab fa-linkedin-in fa-lg white-text mr-4"> </i>
+          </a>
+
+          <!--Instagram-->
+          <a class="ins-ic" href="#">
+            <i class="fab fa-instagram fa-lg white-text mr-4"> </i>
+          </a>
+         
+          <!--whatsapp-->
+          <a class="ins-ic" href="https://wa.me/9779845431425">
+            <i class="fab fa-whatsapp fa-lg white-text mr-4"> </i>
+          </a>
+        </div>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row-->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">Powered By:
+    <a href="#"> Gaurab</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+<!-- Scroll to top button -->
+<div class="top-move" id="move-top">
+  <a href="#"><i class="fas fa-arrow-up"></i></a>
+</div>
+<script>
+$(window).scroll(function() {
+  if ($(window).scrollTop() > 50) { $('.navbar').addClass('scrolled'); } 
+  else { $('.navbar').removeClass('scrolled'); }
+
+  if ($(window).scrollTop() > 300) { $('#move-top').addClass('visible'); } 
+  else { $('#move-top').removeClass('visible'); }
+});
+
+// Scroll to top button click
+$('#move-top a').on('click', function(e) {
+  e.preventDefault();
+  $('html, body').animate({ scrollTop: 0 }, 800);
+});
+
+// Interactive HTML Demo Functions
+function addElement(tag) {
+  const demoContainer = document.getElementById('html-demo');
+  
+  // Clear placeholder text if it exists
+  if (demoContainer.innerHTML.includes('Your HTML elements will appear here')) {
+    demoContainer.innerHTML = '';
+  }
+  
+  const newElement = document.createElement(tag);
+  
+  switch(tag) {
+    case 'h1':
+      newElement.textContent = 'This is a Heading';
+      newElement.style.color = '#6c63ff';
+      break;
+    case 'p':
+      newElement.textContent = 'This is a paragraph demonstrating how HTML elements can be dynamically created.';
+      break;
+    case 'button':
+      newElement.textContent = 'Click Me';
+      newElement.className = 'btn btn-primary';
+      newElement.onclick = function() {
+        alert('Button clicked! This shows interactive HTML elements.');
+      };
+      break;
+    case 'img':
+      newElement.src = 'https://via.placeholder.com/150';
+      newElement.alt = 'Placeholder Image';
+      break;
+  }
+  
+  demoContainer.appendChild(newElement);
+}
+
+function clearDemo() {
+  document.getElementById('html-demo').innerHTML = '<p class="text-muted">Your HTML elements will appear here...</p>';
+}
+</script>
+<!-- Javascript -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  </body>
+</html>

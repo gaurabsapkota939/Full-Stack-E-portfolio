@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Full Stack Development includes HTML, CSS, Javascript, and Bootstrap for the front end and PHP+MySQL for back end technology."/>
+    <meta name="Keywords" content="Full Stack Development, HTML, CSS, Javascript, Bootstrap, PHP+MySQL, Web Application Development">
+    <meta name="author" content="Gaurab Sapkota">
+    <meta name="copyright" content="Copyright © 2025" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" 
+          rel="stylesheet" crossorigin="anonymous">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Favicon for Portfolio -->
+    <link rel="shortcut icon" href="assests/images/favicon.png" type="image/x-icon">
+
+    <title>What is full stack? - Portfolio</title>
+
+    <style>
+      
+      :root {
+        --primary: #6c63ff;
+        --secondary: #4d44db;
+        --accent: #ff6b6b;
+        --dark: #121212;
+        --dark-light: #1e1e1e;
+        --light: #f8f9fa;
+        --text: #e1e1e1;
+      }
+
+      body {
+        background-color: var(--dark);
+        color: var(--text);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar { width: 10px; }
+      ::-webkit-scrollbar-track { background: var(--dark-light); }
+      ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+      ::-webkit-scrollbar-thumb:hover { background: var(--secondary); }
+
+      /* Navbar */
+      .navbar {
+        background: rgba(30, 30, 30, 0.95) !important;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+        padding: 12px 0;
+        transition: all 0.4s ease;
+      }
+      .navbar.scrolled { padding: 8px 0; }
+      .navbar-brand { font-weight: 700; letter-spacing: 1px; color: var(--light) !important; }
+      .navbar-brand img { transition: transform 0.3s ease; }
+      .navbar-brand:hover img { transform: rotate(5deg); }
+      .navbar-nav .nav-link {
+        color: var(--text) !important; font-weight: 500; margin: 0 8px; 
+        position: relative; padding: 8px 0 !important;
+      }
+      .navbar-nav .nav-link::after {
+        content: ''; position: absolute; width: 0; height: 2px; 
+        bottom: 0; left: 0; background-color: var(--accent); transition: width 0.3s ease;
+      }
+      .navbar-nav .nav-link:hover::after,
+      .navbar-nav .nav-link.active::after { width: 100%; }
+      .navbar-toggler { border: none; padding: 4px 8px; }
+      .navbar-toggler:focus { box-shadow: none; }
+      .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+      }
+
+      /* Title section */
+      .container-fluid.py-5 {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%) !important;
+        border-radius: 16px;
+        margin-top: 100px;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        position: relative; overflow: hidden;
+      }
+      .container-fluid.py-5::before {
+        content: ''; position: absolute; width: 200%; height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        top: -50%; left: -50%; animation: pulse 15s infinite linear;
+      }
+      @keyframes pulse {
+        0% { transform: rotate(0deg); } 
+        100% { transform: rotate(360deg); }
+      }
+      .display-5 {
+        font-weight: 800;
+        background: linear-gradient(45deg, var(--light), #a5b4fc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        position: relative; z-index: 1;
+      }
+
+      /* Content box */
+      .container.py-5.my-5 {
+        background: var(--dark-light);
+        border-radius: 16px;
+        padding: 40px !important;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        margin-top: 50px !important;
+        margin-bottom: 50px !important;
+      }
+      h2 {
+        font-weight: 700; color: var(--accent);
+        position: relative; padding-bottom: 15px; margin-bottom: 25px;
+      }
+      h2::after {
+        content: ''; position: absolute; bottom: 0; left: 0; 
+        width: 60px; height: 4px;
+        background: linear-gradient(to right, var(--primary), var(--accent));
+        border-radius: 2px;
+      }
+      h3 {
+        font-weight: 600; color: var(--primary);
+        margin-top: 30px; margin-bottom: 20px; 
+        padding-left: 15px; border-left: 4px solid var(--primary);
+      }
+      p.fs-5 { font-size: 1.1rem !important; line-height: 1.8; color: #d1d1d1; }
+      ul.fs-5 { padding-left: 20px; }
+      ul.fs-5 li {
+        margin-bottom: 12px; position: relative; padding-left: 25px;
+      }
+      ul.fs-5 li::before {
+        content: '▹'; position: absolute; left: 0;
+        color: var(--accent); font-size: 1.2rem;
+      }
+      strong { color: var(--light); font-weight: 600; }
+
+      /* Buttons */
+      .btn-outline-warning {
+        border: 2px solid var(--accent); color: var(--accent);
+        border-radius: 50px; padding: 8px 20px; font-weight: 500;
+        transition: all 0.3s ease;
+      }
+      .btn-outline-warning:hover { background-color: var(--accent); color: var(--dark); }
+
+      /* Footer */
+      .page-footer { background: var(--dark-light) !important; margin-top: 80px; }
+      .page-footer a {
+        color: var(--text); text-decoration: none; transition: all 0.3s ease; position: relative;
+      }
+      .page-footer a::after {
+        content: ''; position: absolute; width: 0; height: 1px; bottom: -4px; 
+        left: 0; background-color: var(--accent); transition: width 0.3s ease;
+      }
+      .page-footer a:hover { color: var(--accent); }
+      .page-footer a:hover::after { width: 100%; }
+      .footer-copyright {
+        background: rgba(0,0,0,0.2) !important; color: var(--text);
+      }
+      .footer-copyright a { color: var(--primary); font-weight: 600; }
+
+      .mb-5 a {
+        display: inline-flex; align-items: center; justify-content: center;
+        width: 40px; height: 40px; border-radius: 50%;
+        background: var(--dark); margin: 0 8px; transition: all 0.3s ease;
+      }
+      .mb-5 a:hover { background: var(--primary); transform: translateY(-3px); }
+      .mb-5 a i { font-size: 1.2rem; }
+
+      /* Scroll to top button */
+      .top-move {
+        background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+        border-radius: 50%; height: 50px; width: 50px;
+        box-shadow: 0 5px 20px rgba(108, 99, 255, 0.5);
+        transition: all 0.3s ease;
+        position: fixed; bottom: 30px; right: 30px;
+        display: flex; align-items: center; justify-content: center;
+        z-index: 1000; opacity: 0; visibility: hidden; transform: translateY(20px);
+      }
+      .top-move.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+      .top-move:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(108, 99, 255, 0.7); }
+      .top-move a { color: white !important; font-size: 24px; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; text-decoration: none; }
+
+      /* Animations */
+      @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+      .animate-fadeIn { animation: fadeIn 1s ease forwards; }
+
+      /* styles */
+      .tech-card {
+        background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
+        border-radius: 12px;
+        padding: 20px;
+        margin: 15px 0;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        transition: all 0.3s ease;
+        border-left: 4px solid var(--primary);
+      }
+      .tech-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+      }
+      .tech-icon {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        background: linear-gradient(45deg, var(--primary), var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .stat-box {
+        text-align: center;
+        padding: 20px;
+        border-radius: 12px;
+        background: rgba(108, 99, 255, 0.1);
+        margin: 10px;
+        transition: all 0.3s ease;
+      }
+      .stat-box:hover {
+        background: rgba(108, 99, 255, 0.2);
+        transform: scale(1.05);
+      }
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        background: linear-gradient(45deg, var(--accent), var(--primary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 5px;
+      }
+      .stat-label {
+        font-size: 1rem;
+        color: var(--text);
+      }
+      .fullstack-visual {
+        position: relative;
+        height: 200px;
+        background: linear-gradient(135deg, var(--dark-light) 0%, #2a2a2a 100%);
+        border-radius: 12px;
+        overflow: hidden;
+        margin: 30px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .layer {
+        position: absolute;
+        width: 80%;
+        height: 40px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 600;
+        transition: all 0.5s ease;
+      }
+      .frontend {
+        background: linear-gradient(90deg, var(--primary), #8a85ff);
+        top: 30px;
+        box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+      }
+      .backend {
+        background: linear-gradient(90deg, var(--accent), #ff8e8e);
+        bottom: 30px;
+        box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+      }
+      .database {
+        background: linear-gradient(90deg, #00d4ff, #0096c7);
+        bottom: 80px;
+        box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+      }
+      .fullstack-visual:hover .frontend {
+        transform: translateX(-30px);
+      }
+      .fullstack-visual:hover .backend {
+        transform: translateX(30px);
+      }
+      .fullstack-visual:hover .database {
+        transform: translateX(15px) translateY(-5px);
+      }
+      .highlight-box {
+        background: linear-gradient(90deg, rgba(108, 99, 255, 0.1), rgba(255, 107, 107, 0.1));
+        border-left: 4px solid var(--accent);
+        padding: 20px;
+        border-radius: 8px;
+        margin: 25px 0;
+      }
+      .interactive-list {
+        counter-reset: custom-counter;
+        list-style: none;
+        padding-left: 0;
+      }
+      .interactive-list li {
+        counter-increment: custom-counter;
+        padding: 15px 15px 15px 60px;
+        margin-bottom: 15px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        position: relative;
+        transition: all 0.3s ease;
+      }
+      .interactive-list li:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateX(5px);
+      }
+      .interactive-list li::before {
+        content: counter(custom-counter);
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 36px;
+        height: 36px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+      }
+
+      /* Responsive */
+      @media (max-width: 992px) {
+        .navbar-nav { background: var(--dark-light); border-radius: 10px; padding: 15px; margin-top: 10px; }
+      }
+      @media (max-width: 768px) {
+        .display-5 { font-size: 2.5rem; }
+        .container-fluid.py-5 { margin-top: 80px; }
+        .container.py-5.my-5 { padding: 25px !important; }
+        .stat-box { margin: 10px 0; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark text-light fs-4">
+      <div class="container-fluid">
+        <a class="navbar-brand fs-4 fw-bold" href="#">
+          <img src="assests/images/logo.png" alt="" width="70px" class="rounded-3"> Portfolio
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link active" href="fullstack.html">What is full stack?</a></li>
+            <li class="nav-item"><a class="nav-link" href="html.html">HTML</a></li>
+            <li class="nav-item"><a class="nav-link" href="css.html">CSS</a></li>
+            <li class="nav-item"><a class="nav-link" href="bs.html">Bootstrap</a></li>
+            <li class="nav-item"><a class="nav-link" href="js.html">JavaScript</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+
+<!-- title start -->
+<div class="container-fluid py-5 text-light animate-fadeIn" style="margin-top: 80px;">
+  <h1 class="display-5 fw-bold text-center">What is Full Stack Development?</h1>
+  <p class="text-center fs-4 mt-3">Building the digital world, one layer at a time</p>
+</div>
+<!-- title end -->
+
+<!-- Content Section -->
+    <div class="container py-5 my-5 animate-fadeIn">
+      <h2 class="fw-bold mb-4">Overview</h2>
+      <p class="fs-5">
+        Full Stack Development is the <strong>art of crafting complete web applications</strong> — 
+        from designing intuitive user interfaces that captivate visitors to engineering 
+        robust server infrastructure that powers modern web experiences. A <strong>Full Stack Developer</strong> 
+        is the digital architect who understands both <strong>front-end (client-side)</strong> magic and 
+        <strong>back-end (server-side)</strong> logic, enabling them to build entire products from concept to deployment.
+      </p>
+
+      <!-- Visual Representation of Full Stack -->
+      <div class="fullstack-visual">
+        <div class="layer frontend">Frontend - What Users See & Interact With</div>
+        <div class="layer backend">Backend - The Brain Behind Operations</div>
+        <div class="layer database">Database - Where Information Lives</div>
+      </div>
+
+
+      <h3 class="mt-5">Front End Technologies - The Visual Layer</h3>
+      <p class="fs-5">The frontend is what users see, touch, and experience. It's the art of creating engaging, interactive web interfaces.</p>
+      
+      <div class="row">
+        <div class="col-md-6">
+          <div class="tech-card">
+            <div class="tech-icon"><i class="fab fa-html5"></i></div>
+            <h4>HTML5</h4>
+            <p>The skeleton of every web page - providing structure and semantic meaning to content.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="tech-card">
+            <div class="tech-icon"><i class="fab fa-css3-alt"></i></div>
+            <h4>CSS3</h4>
+            <p>The visual designer - adding colors, animations, and responsive layouts that adapt to any device.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="tech-card">
+            <div class="tech-icon"><i class="fab fa-js-square"></i></div>
+            <h4>JavaScript</h4>
+            <p>The interactivity engine - bringing websites to life with dynamic content and user interactions.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="tech-card">
+            <div class="tech-icon"><i class="fab fa-bootstrap"></i></div>
+            <h4>Bootstrap</h4>
+            <p>The design accelerator - providing pre-built components for rapid, mobile-first development.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="mt-5">Back End Technologies - The Powerhouse</h3>
+      <p class="fs-5">While the frontend handles presentation, the backend manages data, logic, and server operations.</p>
+      
+      <div class="row">
+        <div class="col-md-6">
+          <div class="tech-card">
+            <div class="tech-icon"><i class="fab fa-php"></i></div>
+            <h4>PHP</h4>
+            <p>The server-side workhorse - processing form data, managing sessions, and generating dynamic content.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="tech-card">
+            <div class="tech-icon"><i class="fas fa-database"></i></div>
+            <h4>MySQL</h4>
+            <p>The digital librarian - organizing, storing, and retrieving data efficiently and securely.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <h4><i class="fas fa-lightbulb me-2"></i> Did You Know?</h4>
+        <p class="mb-0">Full Stack Developers can reduce communication overhead by up to 60% since they understand both frontend and backend challenges, leading to more efficient project development.</p>
+      </div>
+
+      <h3 class="mt-5">The Full Stack Advantage</h3>
+      <ol class="interactive-list">
+        <li><strong>End-to-End Project Ownership</strong> - Ability to take ideas from concept to deployment without dependencies</li>
+        <li><strong>Enhanced Problem-Solving</strong> - Understanding how each layer interacts leads to better architectural decisions</li>
+        <li><strong>Career Flexibility</strong> - Opportunities in startups, agencies, enterprises, and freelance work</li>
+        <li><strong>Higher Earning Potential</strong> - Full Stack Developers command premium salaries across the industry</li>
+        <li><strong>Future-Proof Skills</strong> - Foundation that adapts to new frameworks and technologies as they emerge</li>
+      </ol>
+
+      <h3 class="mt-4">Why Become a Full Stack Developer?</h3>
+      <p class="fs-5">
+        Full stack skills are among the most sought-after in tech today. Companies value developers who can 
+        <strong>see the big picture</strong> while managing the intricate details of each development layer. 
+        This holistic understanding leads to more efficient problem-solving and innovative solutions.
+      </p>
+    </div>
+
+<!-- Footer -->
+<footer class="page-footer font-small indigo">
+  <div class="container-fluid text-light">
+    <div class="row text-center d-flex justify-content-center pt-5 mb-3">
+      <div class="col-md-2 mb-3"><h6 class="text-uppercase font-weight-bold"><a href="index.html">Home</a></h6></div>
+      <div class="col-md-2 mb-3"><h6 class="text-uppercase font-weight-bold"><a href="fullstack.html">What is full stack?</a></h6></div>
+      <div class="col-md-2 mb-3"><h6 class="text-uppercase font-weight-bold"><a href="css.html">CSS</a></h6></div>
+      <div class="col-md-2 mb-3"><h6 class="text-uppercase font-weight-bold"><a href="bs.html">Bootstrap</a></h6></div>
+      <div class="col-md-2 mb-3"><h6 class="text-uppercase font-weight-bold"><a href="js.html">Javascript</a></h6></div>
+    </div>
+    <hr class="rgba-white-light" style="margin: 0 15%;">
+    <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
+      <div class="col-md-8 col-12 mt-5"><p style="line-height: 1.7rem">All &copy; right reserved @ 2025</p></div>
+    </div>
+    <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
+    <div class="row pb-3">
+      <div class="col-md-12">
+        <div class="mb-5 text-center">
+          <a class="fb-ic" href="#"><i class="fab fa-facebook-f fa-lg white-text mr-4"> </i></a>
+          <a class="tw-ic" href="#"><i class="fab fa-twitter fa-lg white-text mr-4"> </i></a>
+          <a class="li-ic" href="#"><i class="fab fa-linkedin-in fa-lg white-text mr-4"> </i></a>
+          <a class="ins-ic" href="#"><i class="fab fa-instagram fa-lg white-text mr-4"> </i></a>
+          <a class="ins-ic" href="https://wa.me/9779845431425"><i class="fab fa-whatsapp fa-lg white-text mr-4"> </i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright text-center py-3">Powered By: <a href="#"> Gaurab</a></div>
+</footer>
+<!-- Footer -->
+
+<!-- Scroll to top button -->
+<div class="top-move" id="move-top">
+  <a href="#"><i class="fas fa-arrow-up"></i></a>
+</div>
+<script>
+$(window).scroll(function() {
+  if ($(window).scrollTop() > 50) { $('.navbar').addClass('scrolled'); } 
+  else { $('.navbar').removeClass('scrolled'); }
+
+  if ($(window).scrollTop() > 300) { $('#move-top').addClass('visible'); } 
+  else { $('#move-top').removeClass('visible'); }
+});
+
+// Scroll to top button click
+$('#move-top a').on('click', function(e) {
+  e.preventDefault();
+  $('html, body').animate({ scrollTop: 0 }, 800);
+});
+</script>
+
+<!-- Javascript -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+  </body>
+</html>
